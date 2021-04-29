@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://chat.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Retroscape.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sounds/button-3.wav" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="CHATROOM" type="Control"]
+margin_right = 960.0
+margin_bottom = 592.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="set_up" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="host" type="Button" parent="set_up"]
+margin_left = 24.0
+margin_top = 440.0
+margin_right = 128.0
+margin_bottom = 494.0
+custom_fonts/font = SubResource( 1 )
+text = "HOST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="join" type="Button" parent="set_up"]
+margin_left = 24.0
+margin_top = 510.0
+margin_right = 128.0
+margin_bottom = 566.0
+custom_fonts/font = SubResource( 2 )
+text = "JOIN"
+
+[node name="quit" type="Button" parent="set_up"]
+visible = false
+margin_left = 144.0
+margin_top = 440.0
+margin_right = 248.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 3 )
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="creadits" type="Button" parent="set_up"]
+margin_left = 336.0
+margin_top = 512.0
+margin_right = 495.0
+margin_bottom = 568.0
+custom_fonts/font = SubResource( 3 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ipenter" type="LineEdit" parent="set_up"]
+margin_left = 144.0
+margin_top = 512.0
+margin_right = 320.0
+margin_bottom = 568.0
+text = "127.0.0.1"
+align = 1
+secret_character = "@"
+
+[node name="roomui" type="Panel" parent="."]
+margin_left = 176.0
+margin_top = 16.0
+margin_right = 848.0
+margin_bottom = 416.0
+
+[node name="chatinput" type="LineEdit" parent="roomui"]
+margin_left = 16.0
+margin_top = 336.0
+margin_right = 656.0
+margin_bottom = 392.0
+
+[node name="chatdisplay" type="TextEdit" parent="roomui"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 656.0
+margin_bottom = 336.0
+readonly = true
+show_line_numbers = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="button_up" from="set_up/host" to="." method="_on_host_button_up"]
+[connection signal="button_up" from="set_up/join" to="." method="_on_join_button_up"]
+[connection signal="button_up" from="set_up/quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="set_up/creadits" to="." method="_on_creadits_button_up"]
